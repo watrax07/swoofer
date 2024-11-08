@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte Perm Spoofer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../css/swoofer.css">
+</head>
+<body>
+    
+    <div class="sidebar">
+        <div class="middle-icons">
+            <a href="#"><i class="fa-solid fa-house"></i></a>
+            <a href="./swoof.html"><i class="fa-solid fa-sliders"></i></a>
+        </div>
+        <a href="https://discord.gg/byteshop"><i class="fa-brands fa-discord"></i></a>
+    </div>
+
+    <div class="content">
+        <h1>Byte Perm Spoofer</h1>
+        <div class="divider"></div>
+        <div id="window-controls">
+            <button id="close-button">✘</button>
+        </div>
+        
+        <script>
+            document.getElementById('close-button').addEventListener('click', () => {
+                window.electronAPI.closeWindow();
+            });
+        </script>
+        
+        <div>
+            <h1>
+                Status: <span class="status-indicator"></span> Indetectable
+            </h1>
+            <h1>Last Update</h1>
+            <h1>Key: expire in <span id="key-expiration">Loading...</span></h1>
+        </div>
+    </div>
+
+    <style>
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: green;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+    </style>
+
+    <script>
+        // Obtener la clave del almacenamiento y mostrar la expiración
+        const userKey = localStorage.getItem('userKey');
+        
+        if (userKey) {
+            window.electronAPI.obtenerExpiracionClave(userKey).then(expiration => {
+                document.getElementById('key-expiration').textContent = expiration || 'N/A';
+            });
+        } else {
+            document.getElementById('key-expiration').textContent = 'No se encontró la clave.';
+        }
+    </script>
+
+</body>
+</html>

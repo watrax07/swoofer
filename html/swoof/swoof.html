@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte Perm Spoofer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../css/swoofer.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="middle-icons">
+            <a href="./main.html"><i class="fa-solid fa-house"></i></a>
+            <a href="#"><i class="fa-solid fa-sliders"></i></a>
+        </div>
+        <a href="https://discord.gg/byteshop"><i class="fa-brands fa-discord"></i></a>
+    </div>
+
+    <div class="content">
+        <h1>Byte Perm Spoofer</h1>
+        <div class="divider"></div>
+        <div id="hwid-info" class="serial-info">
+            <pre>Presiona "Look Serials" para ver la información del sistema</pre>
+        </div>
+        <div id="window-controls">
+            <button id="close-button">✘</button>
+        </div>
+        
+        <script>
+            document.getElementById('close-button').addEventListener('click', () => {
+                window.electronAPI.closeWindow();
+            });
+        </script>
+
+        <div id="loading-bar" class="loading-bar">
+            <div class="progress"></div>
+            <span id="loading-text">Cargando...</span>
+        </div>
+        <button id="download-button" style="display:none;" onclick="descargarSeriales()">Descargar Serials</button>
+        <div class="button-group">
+            <button onclick="mostrarSeriales()">Look Serials</button>
+            <button>Bypass</button>
+            <button id="perm-spoof-button">Perm Spoof</button>
+            
+        </div>
+    </div>
+    <div class="punto">
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+    </div>
+
+    <script>
+        document.getElementById('perm-spoof-button').addEventListener('click', async () => {
+            console.log("Botón 'Perm Spoof' clicado.");
+            try {
+                const result = await window.electronAPI.ejecutarPython();
+                alert(result);
+            } catch (error) {
+                console.error('Error ejecutando script Python:', error);
+                alert('Error ejecutando script Python.');
+            }
+        });
+
+        async function mostrarSeriales() {
+            try {
+                const loadingBar = document.getElementById('loading-bar');
+                const progress = document.querySelector('.progress');
+                const container = document.getElementById('hwid-info');
+                const downloadButton = document.getElementById('download-button');
+
+                // Mostrar barra de carga
+                loadingBar.style.display = 'block';
+                container.innerHTML = ''; 
+                const totalTime = 3080;
+                const intervalTime = totalTime / 100; 
+                let progressValue = 0;
+
+                const progressInterval = setInterval(() => {
+                    if (progressValue < 100) {
+                        progressValue++;
+                        progress.style.width = progressValue + '%';
+                    } else {
+                        clearInterval(progressInterval);
+                    }
+                }, intervalTime);
+
+                // Obtener seriales
+                const seriales = await window.electronAPI.obtenerSeriales();
+
+                // Ocultar barra de carga
+                clearInterval(progressInterval);
+                loadingBar.style.display = 'none';
+
+                if (seriales.error) {
+                    container.innerHTML = `<span>Error: ${seriales.error}</span>`;
+                    downloadButton.style.display = 'none'; // Oculta el botón si hay un error
+                } else {
+                    // Mostrar información de los discos
+                    const discosHtml = seriales.disks.map((disk, index) => `
+                        <div><strong>Disco ${index + 1}:</strong> ${disk.serial}</div>
+                    `).join('');
+
+                    container.innerHTML = `
+                        <div><strong>Motherboard Serial:</strong> ${seriales.motherboardSerial}</div>
+                        <div><strong>UUID:</strong> ${seriales.uuid}</div>
+                        <div><strong>CPU:</strong> ${seriales.cpuProcessorId}</div>
+                        <div><strong>BIOS:</strong> ${seriales.bios}</div>
+                        <div><strong>RAM Serial Number:</strong> ${seriales.ramSerial}</div>
+                        <div><strong>MAC Address:</strong> ${seriales.mac}</div>
+                        ${discosHtml}
+                    `;
+
+                    downloadButton.style.display = 'inline-block'; // Muestra el botón de descarga
+                }
+            } catch (error) {
+                console.error('Error mostrando seriales:', error);
+                document.getElementById('hwid-info').innerText = 'Error obteniendo seriales: ' + error;
+            }
+        }
+
+        function descargarSeriales() {
+            const serialesInfo = document.getElementById('hwid-info').innerText;
+            const blob = new Blob([serialesInfo], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'seriales.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

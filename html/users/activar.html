@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/methods/windows.css">
+    <title>Activar Windows</title>
+</head>
+<body>
+    <h1>Activar Windows</h1>
+    <p>
+        Aceptar y poner si en todo lo que te pida.<br>
+        Disfruta tu windows. 
+    </p>
+    <button id="activarBtn">Activar Windows</button>
+    <p id="resultado"></p>
+    
+    <script>
+        document.getElementById('activarBtn').addEventListener('click', async () => {
+            try {
+                const resultado = await window.electronAPI.ejecutarComandos();
+                document.getElementById('resultado').innerText = resultado;
+            } catch (error) {
+                document.getElementById('resultado').innerText = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

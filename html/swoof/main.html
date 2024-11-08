@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte Perm Spoofer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../css/swoofer.css">
+</head>
+<body>
+    
+    <div class="sidebar">
+        <div class="middle-icons">
+            <a href="#"><i class="fa-solid fa-house"></i></a>
+            <a href="./swoof.html"><i class="fa-solid fa-sliders"></i></a>
+        </div>
+        <a href="https://discord.gg/byteshop"><i class="fa-brands fa-discord"></i></a>
+    </div>
+    <div class="punto">
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+    </div>
+
+    <div class="content">
+        <h1>Byte Perm Spoofer</h1>
+        <div class="divider"></div>
+        
+        <div id="window-controls">
+            <button id="close-button">✘</button>
+        </div>
+        
+        <script>
+            document.getElementById('close-button').addEventListener('click', () => {
+                window.electronAPI.closeWindow();
+            });
+        </script>
+        
+        <div>
+            <h1>
+                Status: <span class="status-indicator"></span> Indetectable
+            </h1>
+            <h1>Last Update</h1>
+            <h1>Key expire in: <span id="key-expiration">Loading...</span></h1>
+        </div>
+    </div>
+
+    <style>
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: green;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+    </style>
+
+<script>
+    const userKey = localStorage.getItem('userKey');
+    
+    if (userKey) {
+        console.log(`Clave obtenida del almacenamiento: ${userKey}`);
+        window.electronAPI.obtenerExpiracionClave(userKey).then(expirationISO => {
+            if (expirationISO !== 'No disponible') {
+                console.log(`Fecha de expiración recibida: ${expirationISO}`);
+                const expirationDate = new Date(expirationISO);
+                const now = new Date();
+
+                const timeDifference = expirationDate - now;
+                let timeRemaining;
+
+                if (timeDifference <= 0) {
+                    timeRemaining = "Expirado";
+                } else {
+                    const seconds = Math.floor(timeDifference / 1000);
+                    const minutes = Math.floor(seconds / 60);
+                    const hours = Math.floor(minutes / 60);
+                    const days = Math.floor(hours / 24);
+
+                    if (days > 0) {
+                        timeRemaining = ` ${days} day${days > 1 ? 's' : ''}`;
+                    } else if (hours > 0) {
+                        timeRemaining = ` ${hours} hour${hours > 1 ? 's' : ''}`;
+                    } else if (minutes > 0) {
+                        timeRemaining = `${minutes} minute${minutes > 1 ? 's' : ''}`;
+                    } else {
+                        timeRemaining = `${seconds} second${seconds > 1 ? 's' : ''}`;
+                    }
+                }
+
+                document.getElementById('key-expiration').textContent = timeRemaining;
+            } else {
+                document.getElementById('key-expiration').textContent = 'No disponible';
+            }
+        }).catch(error => {
+            document.getElementById('key-expiration').textContent = 'Error al obtener la fecha de expiración';
+        });
+    } else {
+        console.log("No se encontró la clave en el almacenamiento.");
+        document.getElementById('key-expiration').textContent = 'No se encontró la clave.';
+    }
+</script>
+
+</body>
+</html>

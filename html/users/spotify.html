@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/methods/spotify.css">
+    <title>Activar Spotify</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'; object-src 'none';">
+</head>
+<body>
+    <h1>Activar Spotify</h1>
+    <p>Aceptar y poner "y" en todo lo que te pida.<br>Si no abre a la primera vuelvelo a intentar hasta que abra cmd <br>Disfruta de Spotify  .</p>
+    <button id="spotifyact">Activar Spotify</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById('spotifyact').addEventListener('click', async () => {
+            try {
+                const resultado = await window.electronAPI.activarSpotify();
+                document.getElementById('resultado').innerText = resultado;
+            } catch (error) {
+                document.getElementById('resultado').innerText = `Error: ${error}`;
+            }
+        });
+    </script>
+</body>
+</html>

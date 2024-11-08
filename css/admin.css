@@ -1,0 +1,90 @@
+
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #af7adb;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #af7adb;
+    padding-bottom: 10px;
+    width: 100%;
+    max-width: 800px;
+}
+
+table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #2e2e2e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+thead tr {
+    background-color: #af7adb;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: left;
+}
+
+thead th {
+    padding: 12px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #3c3c3c;
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #383838;
+}
+
+tbody td {
+    padding: 12px;
+    text-align: left;
+}
+
+button {
+    background-color: #af7adb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: rgb(179, 0, 140);
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #af7adb;
+}
+
+.message {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #444444;
+    border-left: 5px solid #00aaff;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}

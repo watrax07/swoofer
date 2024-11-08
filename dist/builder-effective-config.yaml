@@ -1,0 +1,48 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.example.reinstall
+productName: ReinstallApp
+files:
+  - filter:
+      - main.js
+      - preload.js
+      - index.html
+      - activar.html
+      - styles.css
+      - assets/**/*
+      - activation_keys.db
+      - node_modules/**/*
+      -spotify-activate.bat
+extraFiles:
+  - from: activation_keys.db
+    to: activation_keys.db
+win:
+  target: nsis
+  icon: build/icon.ico
+mac:
+  target: dmg
+  icon: build/icon.icns
+linux:
+  target:
+    - AppImage
+    - deb
+  icon: build/icon.png
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  shortcutName: ReinstallApp
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  installerIcon: build/installer-icon.ico
+  uninstallerIcon: build/uninstaller-icon.ico
+  installerHeaderIcon: build/header-icon.ico
+  artifactName: ${productName}-Setup-${version}.exe
+extraResources:
+  - from: assets
+    to: assets
+publish:
+  - provider: github
+    owner: tu-usuario
+    repo: tu-repositorio
+electronVersion: 33.0.2

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ByteShop</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"  href="../../css/styles.css">
+    <script
+    src="https://kit.fontawesome.com/60bf55a8b8.js"
+    crossorigin="anonymous"
+></script>
+</head>
+<body>
+    <div id="window-controls">
+        <button id="close-button">✘</button>
+    </div>
+
+    <script>
+        document.getElementById('close-button').addEventListener('click', () => {
+            window.electronAPI.closeWindow();
+        });
+    </script>
+    <div class="main-text">
+        <h1>ByteShop</h1>
+        <pre class="sub-text">
+           <h2> Ingresa tu Key </h2>
+<form id="key-form">
+    <input type="text" id="activation-key" name="activation-key" placeholder="Introduce tu key" required>
+    <button type="submit" class="action-button">Enviar Key</button>
+</form>
+<pre id="output" class="notification"></pre> <!-- Pre para mostrar el mensaje -->
+        </pre>
+    </div>
+    <script>
+        // Evento para validar la clave ingresada en el formulario
+        document.getElementById('key-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const key = document.getElementById('activation-key').value;
+            const output = document.getElementById('output');
+    
+            try {
+                const esValido = await window.electronAPI.validarClave(key);
+                if (esValido) {
+                    
+                    output.textContent = 'Clave válida. Puedes proceder con la activación manual si lo deseas.';
+                    output.classList.remove('error');
+                } else {
+                    output.textContent = 'Clave no válida. Por favor, inténtelo de nuevo.';
+                    output.classList.add('error'); // Mostrar el recuadro rojo
+                }
+            } catch (error) {
+                output.textContent = `Error al validar la clave: ${error.message}`;
+                output.classList.add('error'); // Mostrar el recuadro rojo en caso de error
+            }
+    
+            // Quitar el mensaje después de 5 segundos
+            setTimeout(() => {
+                output.textContent = '';
+                output.classList.remove('error'); // Remover la clase de error si está presente
+            }, 5000);
+        });
+    </script>
+    
+    <div class="punto">
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{
+  "name": "ByteShop",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "electron-forge start",
+    "build": "ng build",
+    "electron": "electron .",
+    "electron-build": "ng build && electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "keywords": [],
+  "author": "watrax",
+  "license": "ISC",
+  "description": "Aplicación Electron para validación de claves y activación de Windows",
+  "dependencies": {
+    "discord-rpc": "^4.0.1",
+    "ejs": "^3.1.10",
+    "electron-squirrel-startup": "^1.0.1",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "fs": "^0.0.1-security",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.7.3",
+    "oas": "^25.0.3",
+    "os": "^0.1.2",
+    "sudo-prompt": "^9.2.1",
+    "systeminformation": "^5.23.5"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.5.0",
+    "@electron-forge/maker-deb": "^7.5.0",
+    "@electron-forge/maker-rpm": "^7.5.0",
+    "@electron-forge/maker-squirrel": "^7.5.0",
+    "@electron-forge/maker-zip": "^7.5.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.5.0",
+    "@electron-forge/plugin-fuses": "^7.5.0",
+    "@electron/fuses": "^1.8.0",
+    "electron": "^33.0.2"
+  },
+  "build": {
+    "appId": "com.example.reinstall",
+    "productName": "ReinstallApp",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "spotify-activate.bat",
+      "node_modules/**/*"
+    ],
+    "icon": "assets/icons/byte.ico"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "assets/icons/byte.ico"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "setupIcon": "assets/icons/byte.ico"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        }
+      ]
+    }
+  }
+}

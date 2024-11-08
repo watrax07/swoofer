@@ -1,0 +1,445 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1af6;
+    color: #ffffff;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #1a1a1a00;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+
+.sidebar::before,
+.sidebar::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: #a6acebd3;
+}
+
+.sidebar::before {
+    height: 2px;
+    top: 60px;
+}
+
+.sidebar::after {
+    width: 2px;
+    height: calc(100% - 60px);
+    top: 60px;
+    right: -2px;
+}
+
+.sidebar a {
+    color: #a6acebd3;
+    font-size: 24px;
+    margin: 10px 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sidebar a:hover {
+    color: #4f29d8;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background-color: #a6acebd3;
+    position: absolute;
+    top: 60px;
+    left: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+    margin-top: -5px;
+}
+
+.serial-info {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.serial-info span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.button-group button {
+    padding: 10px;
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.button-group button:hover {
+    background-color: #4f29d8;
+}
+
+.button-group button:nth-child(1),
+.button-group button:nth-child(2) {
+    flex: 1;
+}
+
+.button-group button:nth-child(3) {
+    flex-basis: 100%;
+}
+#download-button {
+    padding: 10px;
+    width: 100%;
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    margin-bottom: 10px; /* Añade espacio arriba para separarlo del resto */
+}
+
+#download-button:hover {
+    background-color: #4f29d8;
+}
+
+.sidebar .middle-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    gap: 20px;
+}
+
+.sidebar .bottom-icon {
+    margin-bottom: 20px;
+}
+
+.loading-bar {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background-color: #6c5ce7;
+    border-radius: 5px;
+}
+
+#close-button {
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    background: none;
+    border: none;
+    color: #a35edb;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px; /* Aumenta el área clicable alrededor de la "X" */
+    transition: color 0.3s, transform 0.3s;
+}
+
+#close-button:hover {
+    color: #ff4444;
+    transform: scale(1.1);
+}
+
+#close-button:focus {
+    outline: none;
+}
+
+
+
+
+
+
+
+
+
+@keyframes animated {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 50 0%;
+    }
+}
+
+.punto {
+    border-radius: 50%;
+    background: #ffffff;
+    opacity: .8;
+
+    position: absolute;
+    bottom: 0;
+
+    animation: stars 3s linear infinite;
+}
+
+.punto :nth-child(1) {
+    width: 5pxpx;
+    height: 10px;
+    left: 100px;
+    animation-duration: 10s;
+}
+
+.punto :nth-child(2) {
+    width: 5px;
+    height: 5px;
+    left: 130;
+    animation-duration: 5s;
+}
+
+.punto :nth-child(3) {
+    width: 5px;
+    height: 5px;
+    left: 150px;
+    animation-duration: 8s;
+}
+
+.punto :nth-child(4) {
+    width: 5px;
+    height: 5px;
+    left: 170px;
+    animation-duration: 15s;
+}
+
+.punto :nth-child(5) {
+    width: 5px;
+    height: 5px;
+    left: 190px;
+    animation-duration: 9s;
+}
+
+.punto :nth-child(6) {
+    width: 5px;
+    height: 5px;
+    left: 210px;
+    animation-duration: 4s;
+}
+
+.punto :nth-child(7) {
+    width: 5px;
+    height: 5px;
+    left: 230px;
+    animation-duration: 18s;
+}
+
+.punto :nth-child(8) {
+    width: 5px;
+    height: 5px;
+    left: 250px;
+    animation-duration: 3s;
+}
+
+.punto :nth-child(9) {
+    width: 5px;
+    height: 5px;
+    left: 270px;
+    animation-duration: 20s;
+}
+
+.punto :nth-child(10) {
+    width: 5px;
+    height: 5px;
+    left: 290px;
+    animation-duration: 30s;
+}
+
+.punto :nth-child(11) {
+    width: 5px;
+    height: 5px;
+    left: 310px;
+    animation-duration: 15s;
+}
+
+.punto :nth-child(12) {
+    width: 5px;
+    height: 5px;
+    left: 330px;
+    animation-duration: 11s;
+}
+
+.punto :nth-child(13) {
+    width: 4px;
+    height: 4px;
+    left: 350px;
+    animation-duration: 40s;
+}
+
+.punto :nth-child(13) {
+    width: 6px;
+    height: 6px;
+    left: 370px;
+    animation-duration: 44s;
+}
+
+.punto :nth-child(14) {
+    width: 3px;
+    height: 3px;
+    left: 385px;
+    animation-duration: 15s;
+}
+
+.punto :nth-child(15) {
+    width: 8px;
+    height: 8px;
+    left: 405px;
+    animation-duration: 3s;
+}
+
+.punto :nth-child(16) {
+    width: 5px;
+    height: 5px;
+    left: 425px;
+    animation-duration: 30s;
+}
+
+.punto :nth-child(17) {
+    width: 2px;
+    height: 2px;
+    left: 435px;
+    animation-duration: 12s;
+}
+
+.punto :nth-child(18) {
+    width: 3px;
+    height: 3px;
+    left: 445px;
+    animation-duration: 40s;
+}
+
+.punto :nth-child(19) {
+    width: 4px;
+    height: 4px;
+    left: 460px;
+    animation-duration: 10s;
+}
+
+.punto :nth-child(20) {
+    width: 5px;
+    height: 5px;
+    left: 470px;
+    animation-duration: 20s;
+}
+
+.punto :nth-child(21) {
+    width: 2px;
+    height: 2px;
+    left: 480px;
+    animation-duration: 40s;
+}
+
+.punto :nth-child(22) {
+    width: 4px;
+    height: 4px;
+    left: 500px;
+    animation-duration: 30s;
+}
+
+.punto :nth-child(23) {
+    width: 5px;
+    height: 5px;
+    left: 515px;
+    animation-duration: 15s;
+}
+
+.punto :nth-child(24) {
+    width: 2px;
+    height: 2px;
+    left: 535px;
+    animation-duration: 11s;
+}
+
+.punto :nth-child(25) {
+    width: 5px;
+    height: 5px;
+    left: 546px;
+    animation-duration: 10s;
+}
+
+.punto :nth-child(26) {
+    width: 2px;
+    height: 2px;
+    left: 560px;
+    animation-duration: 5s;
+}
+
+.punto :nth-child(27) {
+    width: 5px;
+    height: 5px;
+    left: 574px;
+    animation-duration: 8s;
+}
+
+.punto :nth-child(28) {
+    width: 3px;
+    height: 3px;
+    left: 591px;
+    animation-duration: 15s;
+}
+
+.punto :nth-child(29) {
+    width: 2px;
+    height: 2px;
+    left: 600px;
+    animation-duration: 9s;
+}
+
+
+@keyframes stars {
+    0% {
+        bottom: 0;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        bottom: 100vh;
+        opacity: 0;
+        animation: initial;
+    }
+}
+

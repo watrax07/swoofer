@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal - ByteShop</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div id="window-controls">
+        <button id="close-button">✘</button>
+    </div>
+
+    <script>
+        document.getElementById('close-button').addEventListener('click', () => {
+            window.electronAPI.closeWindow();
+        });
+    </script>
+    <div class="container">
+        <header>
+            <h1>Bienvenido a ByteShop</h1>
+        </header>
+
+        
+        <section>
+            <h2>Ingresa tu Key</h2>
+            <p>Si tienes una Key, por favor ingrésala a continuación:</p>
+            <form id="key-form">
+                <input type="text" id="activation-key" name="activation-key" placeholder="Introduce tu código aquí" required>
+                <button type="submit" class="action-button">Enviar Código</button>
+            </form>
+            <pre id="output" class="notification"></pre> <!-- Pre para mostrar el mensaje -->
+        </section>
+        
+        <footer>
+            © 2024 Tienda Online. Todos los derechos reservados.
+        </footer>
+    </div>
+
+    <script>
+        // Evento para validar la clave ingresada en el formulario
+        document.getElementById('key-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const key = document.getElementById('activation-key').value;
+            const output = document.getElementById('output');
+
+            try {
+                const esValido = await window.electronAPI.validarClave(key);
+                if (esValido) {
+                    output.textContent = 'Clave válida. Puedes proceder con la activación manual si lo deseas.';
+                    output.classList.remove('error');
+                } else {
+                    output.textContent = 'Clave no válida. Por favor, inténtelo de nuevo.';
+                    output.classList.add('error'); // Mostrar el recuadro rojo
+                }
+            } catch (error) {
+                output.textContent = `Error al validar la clave: ${error.message}`;
+                output.classList.add('error'); // Mostrar el recuadro rojo en caso de error
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+/* Estilos globales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #131313;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px; /* Asegura que no se superpongan los controles */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden; /* Evita barras de desplazamiento */
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 20px; /* Bordes redondeados */
+}
+
+/* Controles de ventana */
+#window-controls {
+    position: absolute;
+    top: 10px; /* Ajusta según lo necesario */
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -22px;
+}
+
+#window-controls button {
+    background: none;
+    border: none;
+    color: #a35edb;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+#window-controls button:hover {
+    color: #ffcccc;
+    transform: scale(1.1);
+}
+
+#window-controls button:focus {
+    outline: none;
+}
+
+/* Botón de cerrar con color más intenso */
+#close-button:hover {
+    color: #ff4444;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 700px; /* Asegura que el contenedor principal no exceda el ancho de la ventana */
+    width: 600px;
+    height: 500px; /* Ocupa todo el alto de la ventana */
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    box-sizing: border-box; /* Incluye padding y border dentro de las dimensiones totales */
+}
+
+/* Encabezado */
+header {
+    background-color: #a35edb;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    color: #ffffff;
+    font-size: 24px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Sección */
+section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #3a3a3a;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Títulos de sección */
+h2 {
+    color: #ffffff;
+    border-bottom: 2px solid #a35edb;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #444;
+    color: #e0e0e0;
+}
+
+form input[type="text"]:focus {
+    border-color: #a35edb;
+    outline: none;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #a35edb;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #6a0dad;
+    transform: translateY(-2px);
+}
+
+/* Notificación de error */
+.notification {
+    display: none; /* Ocultar por defecto */
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    background-color: #d9534f; /* Fondo rojo */
+    color: #ffffff; /* Texto blanco */
+}
+
+/* Mostrar notificación de error */
+.notification.error {
+    display: block;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: #a35edb;
+    border-radius: 0 0 10px 10px;
+    color: #ffffff;
+}
