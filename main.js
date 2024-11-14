@@ -22,6 +22,7 @@ async function connectDB() {
 
 function getDB() {
     return db;
+    token 
 }
 
 
@@ -42,8 +43,8 @@ function createWindow() {
         transparent: true 
     });
 
-     win.loadFile('./html/swoof/main.html');
-   //win.loadFile('./html/principal/index.html');
+     //win.loadFile('./html/swoof/main.html'); 
+   win.loadFile('./html/principal/index.html');
 }
 
 app.whenReady().then(async () => {
@@ -79,6 +80,7 @@ ipcMain.handle('ejecutar-python', async () => {
 ipcMain.handle('validar-clave', async (event, key) => {
     const db = getDB();
     const clave = await db.collection('keys').findOne({ key: key });
+    
 
     if (clave) {
         const win = BrowserWindow.getFocusedWindow();
